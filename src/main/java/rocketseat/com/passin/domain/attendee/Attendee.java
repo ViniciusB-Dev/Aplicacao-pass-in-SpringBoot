@@ -1,21 +1,27 @@
 package rocketseat.com.passin.domain.attendee;
 
+import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import rocketseat.com.passin.domain.event.Event;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Table(name = "attendees")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Attendee {
 
     @Id
@@ -24,13 +30,14 @@ public class Attendee {
 
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String email;
 
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
     private Event event;
-    @Column(name ="created_at")
-    private LocalDateTime createdAt;
 
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 }
