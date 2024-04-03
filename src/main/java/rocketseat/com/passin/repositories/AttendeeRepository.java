@@ -13,4 +13,5 @@ public interface AttendeeRepository extends JpaRepository<Attendee, String>{
 
     Optional<Attendee> findByEventIdAndEmail(String eventId, String email);
 
+
 }
